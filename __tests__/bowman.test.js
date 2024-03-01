@@ -1,4 +1,4 @@
-import { Bowman } from '../src/index';
+import { Bowman } from '../src/bowman';
 
 test('Правильно создается объект', () => {
     const bowman = new Bowman ('Alex');

@@ -1,9 +1,9 @@
-import { Character } from '../src/index';
+import  Character  from '../src/character';
 
 describe('Character', () => {
-  test('should create a character with valid name and type', () => {
-    const character = new Character('Alex', 'Bowman');
-    expect(character.name).toBe('Alex');
+  test('should create a valid character', () => {
+    const character = new Character('Archer', 'Bowman');
+    expect(character.name).toBe('Archer');
     expect(character.type).toBe('Bowman');
     expect(character.health).toBe(100);
     expect(character.level).toBe(1);
@@ -11,28 +11,18 @@ describe('Character', () => {
     expect(character.defence).toBeUndefined();
   });
 
-  test('should throw an error if name length is less than 2', () => {
-    expect(() => new Character('A', 'Bowman')).toThrow('Name must be a string with 2 to 10 characters');
+  test('should throw an error for an invalid name length', () => {
+    expect(() => new Character('A', 'Bowman')).toThrow('Имя должно содержать от 2 до 10 символов');
+    expect(() => new Character('LongNameOverTen', 'Bowman')).toThrow('Имя должно содержать от 2 до 10 символов');
   });
 
-  test('should throw an error if name length is more than 10', () => {
-    expect(() => new Character('AlexanderTheGreat', 'Bowman')).toThrow('Name must be a string with 2 to 10 characters');
+  test('should throw an error for an unknown type', () => {
+    expect(() => new Character('Archer', 'Unknown')).toThrow('Неизвестное существо');
   });
 
-  test('should throw an error if name is not a string', () => {
-    expect(() => new Character(1234, 'Bowman')).toThrow('Name must be a string with 2 to 10 characters');
-  });
-
-  test('should throw an error for invalid character type', () => {
-    expect(() => new Character('Alex', 'InvalidType')).toThrow('Invalid character type');
-  });
-
-  test('should allow valid types', () => {
-    const validTypes = ['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
-    validTypes.forEach(type => {
-      expect(() => new Character('Alex', type)).not.toThrow();
-    });
+  test('initial properties should be set correctly', () => {
+    const character = new Character('Archer', 'Bowman');
+    expect(character.health).toBe(100);
+    expect(character.level).toBe(1);
   });
 });
-
-

@@ -1,4 +1,4 @@
-import { Undead } from '../src/index';
+import { Undead } from '../src/undead';
 
 test('Правильно создается объект', () => {
     const  undead = new  Undead ('Alex');

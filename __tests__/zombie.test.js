@@ -1,4 +1,4 @@
-import { Zombie } from '../src/index';
+import { Zombie } from '../src/zombie';
 
 test('Правильно создается объект', () => {
     const  zombie = new  Zombie ('Alex');
